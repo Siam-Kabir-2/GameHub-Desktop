@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gamehub.HomeController">
+
+    <top>
+        <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #2D2D2D; -fx-padding: 10 20 10 20;"
+              BorderPane.alignment="CENTER">
+            <children>
+                <Button onAction="#onUserClick" style="-fx-background-color:transparent;">
+                    <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/user.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <VBox alignment="CENTER">
+                    <children>
+                        <Label text="GAMEHUB" textFill="#e0e0e0">
+                            <font>
+                                <Font name="Verdana Bold" size="40.0"/>
+                            </font>
+                        </Label>
+                        <Label text="YOUR MINI GAME COLLECTION" textFill="#aaaaaa">
+                            <font>
+                                <Font name="Arial" size="12.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button onAction="#onSettingsClick" style="-fx-background-color:transparent;">
+                    <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/settings.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <GridPane alignment="CENTER" hgap="30.0" style="-fx-background-color: #1E1E2C;" vgap="30.0"
+                  BorderPane.alignment="CENTER">
+            <children>
+                <Button onAction="#onTicTacToeClick" style="-fx-background-color: transparent; -fx-cursor: hand;"
+                        GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <graphic>
+                        <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/tictactoe.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Button onAction="#onSnakeClick" style="-fx-background-color: transparent; -fx-cursor: hand;"
+                        GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <graphic>
+                        <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/snake.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Button onAction="#onGuessClick" style="-fx-background-color: transparent; -fx-cursor: hand;"
+                        GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <graphic>
+                        <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/guess.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Button onAction="#onRpsClick" style="-fx-background-color: transparent; -fx-cursor: hand;"
+                        GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <graphic>
+                        <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/rps.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Button onAction="#onMemoryClick" style="-fx-background-color: transparent; -fx-cursor: hand;"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <graphic>
+                        <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/memory.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Button onAction="#on2048Click" style="-fx-background-color: transparent; -fx-cursor: hand;"
+                        GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <graphic>
+                        <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/2048.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints/>
+                <RowConstraints/>
+            </rowConstraints>
+        </GridPane>
+    </center>
+</BorderPane>
