@@ -17,20 +17,28 @@
             fx:controller="com.gamehub.HomeController">
 
     <top>
-        <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #2D2D2D; -fx-padding: 10 20 10 20;"
-              BorderPane.alignment="CENTER">
-            <children>
-                <Button onAction="#onUserClick" style="-fx-background-color:transparent;">
-                    <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../images/user.png"/>
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
+        <VBox>
+            <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #2D2D2D; -fx-padding: 10 20 10 20;"
+                  BorderPane.alignment="CENTER">
+                <children>
+                    <HBox alignment="CENTER" spacing="10">
+                        <Button onAction="#onUserClick" style="-fx-background-color:transparent; -fx-cursor: hand;">
+                            <graphic>
+                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../images/user.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Label fx:id="usernameLabel" text="Username" textFill="#FFFFFF" style="-fx-font-size: 16px; -fx-font-weight: bold;">
+                            <font>
+                                <Font name="Arial Bold" size="16.0"/>
+                            </font>
+                        </Label>
+                    </HBox>
 
-                <Region HBox.hgrow="ALWAYS"/>
+                    <Region HBox.hgrow="ALWAYS"/>
 
                 <VBox alignment="CENTER">
                     <children>
@@ -60,6 +68,45 @@
                 </Button>
             </children>
         </HBox>
+        
+        <VBox fx:id="userDropdown" alignment="TOP_LEFT" 
+              style="-fx-background-color: #3A3A3A; -fx-padding: 10; -fx-border-color: #555555; -fx-border-width: 0 0 2 0;" 
+              spacing="5">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 5;">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../images/user.png"/>
+                        </image>
+                    </ImageView>
+                    <VBox>
+                        <Label fx:id="usernameLabel2" text="Username" textFill="#FFFFFF" style="-fx-font-weight: bold;">
+                            <font>
+                                <Font name="Arial Bold" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label text="Logged In" textFill="#AAAAAA" style="-fx-font-size: 11px;"/>
+                    </VBox>
+                </HBox>
+                
+                <Region style="-fx-background-color: #555555; -fx-pref-height: 1;"/>
+                
+                <Button text="🚪 Logout" onAction="#onLogoutClick" 
+                        style="-fx-background-color: #D32F2F; 
+                               -fx-text-fill: white; 
+                               -fx-font-size: 14px; 
+                               -fx-font-weight: bold;
+                               -fx-padding: 10 20;
+                               -fx-cursor: hand;
+                               -fx-background-radius: 5;"
+                        prefWidth="200">
+                    <font>
+                        <Font name="Arial Bold" size="14.0"/>
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+        </VBox>
     </top>
 
     <center>

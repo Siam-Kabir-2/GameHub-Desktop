@@ -1,12 +1,54 @@
 package com.gamehub;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class HomeController {
 
+    @FXML private Label usernameLabel;
+    @FXML private Label usernameLabel2;
+    @FXML private VBox userDropdown;
+
+    @FXML
+    public void initialize() {
+        if (UserSession.getInstance().isLoggedIn()) {
+            String username = UserSession.getInstance().getUsername();
+            usernameLabel.setText(username);
+            usernameLabel2.setText(username);
+            System.out.println("Welcome, " + username + "!");
+        }
+        
+        userDropdown.setVisible(false);
+        userDropdown.setManaged(false);
+    }
+
     @FXML
     public void onUserClick() {
-        System.out.println("Opening User...");
+        boolean isVisible = userDropdown.isVisible();
+        userDropdown.setVisible(!isVisible);
+        userDropdown.setManaged(!isVisible);
+    }
+
+    @FXML
+    public void onLogoutClick() {
+        System.out.println("Logging out user: " + UserSession.getInstance().getUsername());
+        
+        UserSession.getInstance().logout();
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/gamehub/LoginView.fxml"));
+            Stage stage = (Stage) usernameLabel.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GameHub - Login");
+        } catch (Exception e) {
+            System.err.println("Error returning to login: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -17,36 +59,30 @@ public class HomeController {
     @FXML
     public void onTicTacToeClick() {
         System.out.println("Launching Tic Tac Toe...");
-        // SceneManager.switchTo(new TicTacToeGame().getScene());
     }
 
     @FXML
     public void onSnakeClick() {
         System.out.println("Launching Snake...");
-        // SceneManager.switchTo(new SnakeGame().getScene());
     }
 
     @FXML
     public void onGuessClick() {
         System.out.println("Launching Guess...");
-        // SceneManager.switchTo(new GuessGame().getScene());
     }
 
     @FXML
     public void onRpsClick() {
         System.out.println("Launching Rock-paper-Scissor...");
-        // SceneManager.switchTo(new RpsGame().getScene());
     }
 
     @FXML
     public void onMemoryClick() {
         System.out.println("Launching Memory Game...");
-        // SceneManager.switchTo(new MemoryGame().getScene());
     }
 
     @FXML
     public void on2048Click() {
         System.out.println("Launching 2048...");
-        // SceneManager.switchTo(new 2048Game().getScene());
     }
 }

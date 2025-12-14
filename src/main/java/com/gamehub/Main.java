@@ -12,14 +12,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        // Initialize database tables (creates users and highscores tables if they don't
-        // exist)
         DatabaseManager.initializeDatabase();
-
-        // Set the primary stage in SceneManager for easy scene switching
         SceneManager.setStage(primaryStage);
 
-        // Load the Login screen as the starting point
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gamehub/LoginView.fxml"));
         Parent root = loader.load();
 
@@ -27,7 +22,8 @@ public class Main extends Application {
 
         primaryStage.setTitle("GameHub - Login");
         primaryStage.setScene(loginScene);
-        primaryStage.setResizable(false); // Optional: prevent window resizing
+        primaryStage.setResizable(true);
+        primaryStage.setMaximized(false);
         primaryStage.show();
     }
 
