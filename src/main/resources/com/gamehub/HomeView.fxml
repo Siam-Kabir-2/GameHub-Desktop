@@ -57,11 +57,11 @@
 
                 <Region HBox.hgrow="ALWAYS"/>
 
-                <Button onAction="#onSettingsClick" style="-fx-background-color:transparent;">
+                <Button onAction="#onLeaderboardClick" style="-fx-background-color:transparent;">
                     <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/settings.png"/>
+                                <Image url="@../../images/leaderboard.png"/>
                             </image>
                         </ImageView>
                     </graphic>

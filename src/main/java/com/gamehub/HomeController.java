@@ -52,8 +52,8 @@ public class HomeController {
     }
 
     @FXML
-    public void onSettingsClick() {
-        System.out.println("Opening Settings...");
+    public void onLeaderboardClick() {
+        System.out.println("Opening Leaderboard...");
     }
 
     @FXML
