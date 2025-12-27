@@ -21,6 +21,8 @@ public class Main extends Application {
         Scene loginScene = new Scene(root);
 
         primaryStage.setTitle("GameHub - Login");
+        primaryStage.setWidth(900);
+        primaryStage.setHeight(600);
         primaryStage.setScene(loginScene);
         primaryStage.setResizable(true);
         primaryStage.setMaximized(false);

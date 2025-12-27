@@ -53,7 +53,8 @@ public class DatabaseManager {
                 "user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE," +
                 "game_name VARCHAR(50) NOT NULL," +
                 "score INTEGER NOT NULL," +
-                "played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
+                "played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
+                "UNIQUE(user_id, game_name)" +
                 ");";
 
         try (Connection conn = getConnection();
@@ -126,87 +127,88 @@ public class DatabaseManager {
         }
     }
 
-
     public static boolean saveScore(int userId, String gameName, int score) {
-        String SQL = "INSERT INTO highscores (user_id, game_name, score) VALUES (?, ?, ?)";
-        
+        String SQL = "INSERT INTO highscores (user_id, game_name, score) VALUES (?, ?, ?) " +
+                "ON CONFLICT (user_id, game_name) " +
+                "DO UPDATE SET score = EXCLUDED.score " +
+                "WHERE EXCLUDED.score > highscores.score";
+
         try (Connection conn = getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
-            
+                PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+
             pstmt.setInt(1, userId);
             pstmt.setString(2, gameName);
             pstmt.setInt(3, score);
-            
+
             int rowsAffected = pstmt.executeUpdate();
-            
+
             if (rowsAffected > 0) {
                 System.out.println("Score saved: " + score + " for " + gameName);
                 return true;
             }
             return false;
-            
+
         } catch (SQLException e) {
             System.err.println("Error saving score: " + e.getMessage());
             return false;
         }
     }
 
-
     public static int getUserHighScore(int userId, String gameName) {
-        String SQL = "SELECT MAX(score) as high_score FROM highscores WHERE user_id = ? AND game_name = ?";
-        
+        String SQL = "SELECT score FROM highscores WHERE user_id = ? AND game_name = ?";
+
         try (Connection conn = getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
-            
+                PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+
             pstmt.setInt(1, userId);
             pstmt.setString(2, gameName);
-            
+
             ResultSet rs = pstmt.executeQuery();
-            
+
             if (rs.next()) {
-                int highScore = rs.getInt("high_score");
+                int highScore = rs.getInt("score");
                 System.out.println("User high score for " + gameName + ": " + highScore);
                 return highScore;
             }
             return 0;
-            
+
         } catch (SQLException e) {
             System.err.println("Error fetching user high score: " + e.getMessage());
             return 0;
         }
     }
+
     public static String[][] getLeaderboard(String gameName, int limit) {
-        String SQL = "SELECT u.username, MAX(h.score) as best_score " +
-                     "FROM highscores h " +
-                     "JOIN users u ON h.user_id = u.user_id " +
-                     "WHERE h.game_name = ? " +
-                     "GROUP BY u.username " +
-                     "ORDER BY best_score DESC " +
-                     "LIMIT ?";
-        
+        String SQL = "SELECT u.username, h.score " +
+                "FROM highscores h " +
+                "JOIN users u ON h.user_id = u.user_id " +
+                "WHERE h.game_name = ? " +
+                "ORDER BY h.score DESC " +
+                "LIMIT ?";
+
         try (Connection conn = getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
-            
+                PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+
             pstmt.setString(1, gameName);
             pstmt.setInt(2, limit);
-            
+
             ResultSet rs = pstmt.executeQuery();
 
             java.util.List<String[]> leaderboard = new java.util.ArrayList<>();
             while (rs.next()) {
                 String username = rs.getString("username");
-                int score = rs.getInt("best_score");
-                leaderboard.add(new String[]{username, String.valueOf(score)});
+                int score = rs.getInt("score");
+                leaderboard.add(new String[] { username, String.valueOf(score) });
             }
 
             String[][] result = new String[leaderboard.size()][2];
             for (int i = 0; i < leaderboard.size(); i++) {
                 result[i] = leaderboard.get(i);
             }
-            
+
             System.out.println("🏆 Leaderboard loaded for " + gameName + " (" + result.length + " entries)");
             return result;
-            
+
         } catch (SQLException e) {
             System.err.println("Error fetching leaderboard: " + e.getMessage());
             return new String[0][0];

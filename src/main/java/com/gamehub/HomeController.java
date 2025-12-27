@@ -8,11 +8,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class HomeController {
 
-    @FXML private Label usernameLabel;
-    @FXML private Label usernameLabel2;
-    @FXML private VBox userDropdown;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label usernameLabel2;
+    @FXML
+    private VBox userDropdown;
 
     @FXML
     public void initialize() {
@@ -22,7 +27,7 @@ public class HomeController {
             usernameLabel2.setText(username);
             System.out.println("Welcome, " + username + "!");
         }
-        
+
         userDropdown.setVisible(false);
         userDropdown.setManaged(false);
     }
@@ -37,9 +42,9 @@ public class HomeController {
     @FXML
     public void onLogoutClick() {
         System.out.println("Logging out user: " + UserSession.getInstance().getUsername());
-        
+
         UserSession.getInstance().logout();
-        
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/com/gamehub/LoginView.fxml"));
             Stage stage = (Stage) usernameLabel.getScene().getWindow();
@@ -69,6 +74,13 @@ public class HomeController {
     @FXML
     public void onGuessClick() {
         System.out.println("Launching Guess...");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/gamehub/game/GuessView.fxml"));
+            Scene guessScene = new Scene(root);
+            SceneManager.switchTo(guessScene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

@@ -12,7 +12,6 @@ public class LoginController {
     @FXML private PasswordField passwordField;
     @FXML private Label errorLabel;
     @FXML private Button loginButton;
-    @FXML private Hyperlink signupLink;
 
     @FXML
     private void handleLogin() {

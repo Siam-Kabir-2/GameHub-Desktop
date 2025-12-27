@@ -13,7 +13,6 @@ public class SignupController {
     @FXML private PasswordField confirmPasswordField;
     @FXML private Label errorLabel;
     @FXML private Button signupButton;
-    @FXML private Hyperlink loginLink;
 
     @FXML
     private void handleSignup() {
