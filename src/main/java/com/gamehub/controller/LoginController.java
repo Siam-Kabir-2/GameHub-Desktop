@@ -1,5 +1,8 @@
-package com.gamehub;
+package com.gamehub.controller;
 
+import com.gamehub.DatabaseManager;
+import com.gamehub.SceneManager;
+import com.gamehub.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,10 +11,14 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class LoginController {
-    @FXML private TextField usernameField;
-    @FXML private PasswordField passwordField;
-    @FXML private Label errorLabel;
-    @FXML private Button loginButton;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private Button loginButton;
 
     @FXML
     private void handleLogin() {

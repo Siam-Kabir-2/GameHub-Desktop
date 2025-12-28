@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="450" style="-fx-background-color: linear-gradient(to bottom, #dfd0cc, #393e46);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamehub.SignupController">
+<BorderPane prefHeight="600.0" prefWidth="450" style="-fx-background-color: linear-gradient(to bottom, #dfd0cc, #393e46);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamehub.controller.SignupController">
     
     <center>
         <VBox alignment="CENTER" spacing="14.0">
@@ -55,9 +55,4 @@
         </VBox>
     </center>
 
-    <bottom>
-        <HBox alignment="CENTER" prefHeight="11.0" prefWidth="450.0" style="-fx-padding: 15;">
-            <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 11px;" text="© 2025 GameHub - All right reserved by Siam Kabir" />
-        </HBox>
-    </bottom>
 </BorderPane>

@@ -7,6 +7,8 @@ module org.example.gamehubd {
     requires io.github.cdimascio.dotenv.java;
 
     opens com.gamehub to javafx.fxml;
+    opens com.gamehub.controller to javafx.fxml;
 
     exports com.gamehub;
+    exports com.gamehub.controller;
 }

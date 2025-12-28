@@ -1,11 +1,12 @@
-package com.gamehub;
+package com.gamehub.controller;
 
+import com.gamehub.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class NavController {
 
-    public void onBackClick(){
+    public void onBackClick() {
         SceneManager.goHome();
     }
 
@@ -26,6 +27,7 @@ public class NavController {
             instance.gameName.setText(name);
         }
     }
+
     public static void setScore(String score) {
         if (instance != null && instance.scoreBox != null) {
             instance.scoreBox.setText(score);

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamehub.NavController">
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gamehub.controller.NavController">
 <HBox alignment="CENTER" style="-fx-background-color: #2D2D2D; -fx-padding: 10 20 10 20;">
       <Button onAction="#onBackClick" mnemonicParsing="false" prefHeight="53.0" prefWidth="130.0" style="-fx-background-color: #2D2D2D;" text="⬅Back" textFill="WHITE">
          <font>

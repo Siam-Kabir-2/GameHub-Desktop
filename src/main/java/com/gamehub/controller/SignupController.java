@@ -1,5 +1,6 @@
-package com.gamehub;
+package com.gamehub.controller;
 
+import com.gamehub.DatabaseManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,11 +9,16 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class SignupController {
-    @FXML private TextField usernameField;
-    @FXML private PasswordField passwordField;
-    @FXML private PasswordField confirmPasswordField;
-    @FXML private Label errorLabel;
-    @FXML private Button signupButton;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private PasswordField confirmPasswordField;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private Button signupButton;
 
     @FXML
     private void handleSignup() {
