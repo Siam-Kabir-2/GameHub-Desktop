@@ -29,6 +29,7 @@ public class LeaderboardController implements Initializable {
         gameSelector.getItems().addAll(GAMES);
         gameSelector.setValue(GAMES[0]);
         loadLeaderboard(GAMES[0]);
+        NavController.setGameName("LEADERBOARD");
     }
 
     @FXML
@@ -99,13 +100,13 @@ public class LeaderboardController implements Initializable {
         return row;
     }
 
-    @FXML
-    private void onBackClick() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/gamehub/HomeView.fxml"));
-            SceneManager.switchTo(new Scene(root));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @FXML
+//    private void onBackClick() {
+//        try {
+//            Parent root = FXMLLoader.load(getClass().getResource("/com/gamehub/HomeView.fxml"));
+//            SceneManager.switchTo(new Scene(root));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
