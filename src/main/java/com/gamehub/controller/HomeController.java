@@ -85,14 +85,11 @@ public class HomeController {
 
     @FXML
     public void onSnakeClick() {
-        System.out.println("Launching Snake...");
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/gamehub/game/SnakeView.fxml"));
-            Scene guessScene = new Scene(root);
-            SceneManager.switchTo(guessScene);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Coming Soon");
+        alert.setHeaderText("Snake Game");
+        alert.setContentText("This game is coming soon! Stay tuned.");
+        alert.showAndWait();
     }
 
     @FXML
